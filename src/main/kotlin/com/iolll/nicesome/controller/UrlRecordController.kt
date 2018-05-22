@@ -85,37 +85,45 @@ class UrlRecordController {
 
     fun getSql(sqlte: String, userId: Long, type: String, filedNames: String, name: String, sd: Sort.Direction, page: Int, size: Int): String {
         var sql = sqlte
+        sql += " where is_delete != 1 "
         if (userId != 0L)
-            sql += " where user_id =" + userId + " "
+            sql += " and user_id =" + userId + " "
         if (!isEmpty(type))
             sql += " and type =" + type + " "
         if (!isEmpty(name))
             sql += " and name like %" + name + "% "
         sql += " order by " + filedNames + " " + sd
         sql += " limit " + page + "," + size
-        println(sql)
+
         return sql
     }
 
     @GetMapping("/{id}")
-    fun getById(@PathVariable("id") id: Long): UrlRecord {
-        return repository.findOne(id)
+    fun getById(@PathVariable("id") id: Long):  Result<UrlRecord> {
+        return RBuilder.Seccess(repository.findOne(id))
     }
 
     @PostMapping("/")
-    fun add(@RequestBody body: UrlRecord): UrlRecord {
+    fun add(@RequestBody body: UrlRecord):  Result<UrlRecord> {
         body.id = 0L
-        return repository.save(body)
+        return RBuilder.Seccess(repository.save(body))
     }
 
     @PutMapping("/")
-    fun update(@RequestBody body: UrlRecord): UrlRecord {
-        return repository.save(body)
+    fun update(@RequestBody body: UrlRecord): Result<UrlRecord> {
+        return RBuilder.Seccess(repository.save(body))
     }
 
+    @PutMapping("/del")
+    fun del(@RequestBody body: UrlRecord):Result<String> {
+        body.isDelete = 1 // 1 已删除
+        repository.save(body)
+        return RBuilder.Seccess("")
+    }
     @DeleteMapping("/{id}")
-    fun del(@PathVariable("id") id: Long) {
-        return repository.delete(id)
+    fun delele(@PathVariable("id") id: Long):Result<String> {
+        repository.delete(id)
+        return RBuilder.Seccess("")
     }
 
 

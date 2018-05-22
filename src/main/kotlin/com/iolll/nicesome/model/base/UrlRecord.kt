@@ -54,7 +54,8 @@ data class UrlRecord(
         /**
          * 点赞数量
          */
-        var starNum: Int = 0
+        var starNum: Int = 0,
+        var isDelete: Int = 0 //0 未删除 1 已删除
 
 ) {
     override fun toString(): String {
