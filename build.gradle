@@ -48,4 +48,8 @@ dependencies {
     compile("mysql:mysql-connector-java")
     //providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+//    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-redis
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-redis', version: '1.4.7.RELEASE'
+//    // https://mvnrepository.com/artifact/org.springframework.session/spring-session-data-redis
+//    compile group: 'org.springframework.session', name: 'spring-session-data-redis', version: '2.0.3.RELEASE'
 }

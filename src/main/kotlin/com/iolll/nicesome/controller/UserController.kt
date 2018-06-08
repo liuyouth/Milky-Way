@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Controller
 @RequestMapping("/user/")
 class UserController {
-//    @Autowired
-//    lateinit var repository: UserRepository
-//
-//    @RequestMapping("/")
-//    fun index(model: Model): String {
-//        val users = repository.findAll().toList()
-//        return setModel(model, users)
-//    }
+    @Autowired
+    lateinit var repository: UserRepository
+
+
 //
 //    @RequestMapping("/add/{id}/{firstName}/{lastName}")
 //    fun add(model: Model, @PathVariable("id") id: Long, @PathVariable("firstName") firstName: String, @PathVariable("lastName") lastName: String): String {

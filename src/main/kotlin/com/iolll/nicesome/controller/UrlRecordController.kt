@@ -60,27 +60,6 @@ class UrlRecordController {
         var list: List<UrlRecord> = q.resultList.toList() as List<UrlRecord>
 
         return RBuilder.Seccess(list, total.toLong(), allPage)
-        //        return RBuilder.Seccess(list, data.totalElements, data.totalPages)
-        //        val sort = Sort(sd, filedNames)
-//        val pageable = PageRequest(pageNum, size, sort)
-//        val data = if (userId==0L) {
-//
-//            if (isEmpty(name) && isEmpty(type)) {
-//                repository.findAll(pageable)
-//            } else if (isEmpty(type)) {
-//                repository.findByNameLike(name, pageable)
-//            } else {
-//                repository.findByTypeLike(type, pageable)
-//            }
-//        }else{
-//             if (isEmpty(name) && isEmpty(type)) {
-//                repository.findByUser_id(userId,pageable)
-//            } else if (isEmpty(type)) {
-//                repository.findByNameLike(name, pageable)
-//            } else {
-//                repository.findByTypeLike(type, pageable)
-//            }
-//        }
     }
 
     fun getSql(sqlte: String, userId: Long, type: String, filedNames: String, name: String, sd: Sort.Direction, page: Int, size: Int): String {
